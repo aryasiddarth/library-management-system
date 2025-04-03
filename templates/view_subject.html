@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Subject</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/take.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary: #fd7e14;        /* Orange */
+            --primary-dark: #e56a13;   /* Darker Orange */
+            --secondary: #d35400;      /* Deep Orange */
+            --accent: #f39c12;         /* Bright Yellow-Orange */
+            --light: #fbe8a6;          /* Light Orange */
+            --dark: #9c4a00;           /* Darker Orange */
+            --success: #28a745;        /* Keeping Green for success */
+            --warning: #f39c12;        /* Keeping Orange for warning */
+            --danger: #dc3545;         /* Keeping Red for alerts */
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            line-height: 1.6;
+            background: url('../images/photo-1562774053-701939374585.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.85);
+            z-index: -1;
+        }
+
+        .subject-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .subject-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .subject-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .subject-details {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .subject-instructor {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .back-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .back-btn i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="subject-container">
+        <div class="subject-box">
+            <h1 class="subject-title">{{ subject[1] }} - {{ subject[0] }}</h1>
+            <div class="subject-details">
+                <p><strong>Sub Categories:</strong> {{ subject[2] }}</p>
+                <p><strong>Schedule:</strong> {{ subject[3] }}</p>
+                <p><strong>Staff:</strong> {{ instructor_name }}</p>
+            </div>
+            <div class="subject-description">
+                            <p>Library staff play a crucial role in creating an organized, welcoming, and resourceful environment for all library users. They are responsible for assisting visitors in locating books, resources, and information, offering guidance on research, and ensuring that materials are properly cataloged and maintained. Beyond just managing books, library staff often lead educational programs, support community events, and provide technology assistance, making libraries essential hubs of knowledge and learning. Their dedication to customer service, combined with their knowledge of the library’s collections, allows them to foster a love for reading and lifelong learning in their communities.</p>
+            </div>
+            <button class="back-btn" onclick="window.location.href='{{ url_for('faculty_subjects') }}'">
+                <i class="fas fa-arrow-left"></i> Back to Subjects
+            </button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+    --primary: #ff7f00; /* Orange */
+    --primary-dark: #e65c00; /* Darker Orange */
+    --secondary: #3e4a5f; /* Slightly muted blue-grey */
+    --accent: #f39c12; /* Amber */
+    --light: #f8f8f8; /* Light grey */
+    --dark: #2c3e50; /* Dark grey, remains the same */
+}
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            line-height: 1.6;
+            background: url('../images/photo-1562774053-701939374585.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.85);
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        td i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .edit-links a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .edit-links a:hover {
+            background-color: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1><i class="fas fa-user-circle"></i> My Profile</h1>
+            <img src="../images/prof.jpg" alt="Profile Picture" class="profile-pic">
+            
+            {% if faculty %}
+                <table>
+                    <tr><th><i class="fas fa-user"></i> Name</th><td>{{ faculty[0] }}</td></tr>
+                    <tr><th><i class="fas fa-id-badge"></i> Staff ID</th><td>{{ faculty[1] }}</td></tr>
+                    <tr><th><i class="fas fa-envelope"></i> Email</th><td>{{ faculty[2] }}</td></tr>
+                </table>
+            {% else %}
+                <p>Faculty details not found.</p>
+            {% endif %}
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#"><i class="fab fa-twitter"></i> Instagram</a>
+            </div>
+
+            <div class="edit-links">
+                <a href="#">Edit Profile</a>
+                <a href="#">Change Password</a>
+                <a href="#">Privacy Settings</a>
+            </div>
+
+            <a href="{{ url_for('faculty_dashboard') }}" class="btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

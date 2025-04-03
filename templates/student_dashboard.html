@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patron Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/take.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary: #fd7e14;        /* Orange */
+            --primary-dark: #e56a13;   /* Darker Orange */
+            --secondary: #d35400;      /* Deep Orange */
+            --accent: #f39c12;         /* Bright Yellow-Orange */
+            --light: #fbe8a6;          /* Light Orange */
+            --dark: #9c4a00;           /* Darker Orange */
+            --success: #28a745;        /* Keeping Green for success */
+            --warning: #f39c12;        /* Keeping Orange for warning */
+            --danger: #dc3545;         /* Keeping Red for alerts */
+        }
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            line-height: 1.6;
+            background: url('../images/photo-1562774053-701939374585.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.85);
+            z-index: -1;
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .dashboard-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dashboard-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .dashboard-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 18px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .dashboard-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .dashboard-btn i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Student Dashboard -->
+    <div class="dashboard-container">
+        <div class="dashboard-box">
+            <h1 class="dashboard-title">Patron Dashboard</h1>
+            <div class="dashboard-links">
+                <button class="dashboard-btn" onclick="window.location.href='{{ url_for('view_profile') }}'">
+                    <i class="fas fa-user"></i> View Profile
+                </button>
+                <button class="dashboard-btn" onclick="window.location.href='{{ url_for('view_courses') }}'">
+                    <i class="fas fa-book"></i> View Books
+                </button>
+                <button class="dashboard-btn" onclick="window.location.href='{{ url_for('view_attendance') }}'">
+                    <i class="fas fa-calendar-check"></i> Check Status
+                </button>
+                <button class="dashboard-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+
+        function logout() {
+            alert("Logging out...");
+            window.location.href = "{{ url_for('logout') }}";
+        }
+    </script>
+</body>
+</html>
